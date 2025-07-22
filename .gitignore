@@ -1,0 +1,41 @@
+# Node modules
+backend/node_modules/
+frontend/node_modules/
+
+# Builds y distribuciones
+frontend/dist/
+backend/dist/
+backend/build/
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+
+# Entornos y secretos
+.env
+*.env
+
+# IDEs y archivos de sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Cobertura de tests
+coverage/
+frontend/coverage/
+backend/coverage/
+
+# Otros
+*.local
+*.sublime-workspace
+*.sublime-project
+
+# Docker data (si llegas a tener volúmenes persistentes locales)
+docker-data/
+postgres-data/
+
+# SQL generados temporales
+sql/*.log
+sql/*.tmp

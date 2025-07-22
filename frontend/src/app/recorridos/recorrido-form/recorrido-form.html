@@ -1,0 +1,89 @@
+<div class="recorrido-form-split">
+  <div class="recorrido-form-container">
+    <mat-card>
+      <mat-card-title>{{ isEdit ? 'Editar Recorrido' : 'Nuevo Recorrido' }}</mat-card-title>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+				<mat-form-field appearance="fill">
+					<mat-label>CODIGO_HERMANDAD</mat-label>
+					<input matInput formControlName="CODIGO_HERMANDAD" required />
+					<mat-error *ngIf="form.controls['CODIGO_HERMANDAD'].invalid">Obligatorio</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="fill">
+					<mat-label>Hermandad</mat-label>
+					<mat-select formControlName="CODIGO_HERMANDAD" required>
+						<mat-option *ngFor="let hermandad of hermandades" [value]="hermandad.CODIGO_HERMANDAD">
+						{{ hermandad.NOMBRE }} ({{ hermandad.CODIGO_HERMANDAD }})
+						</mat-option>
+					</mat-select>
+					<mat-error *ngIf="form.controls['CODIGO_HERMANDAD'].invalid">Obligatorio</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="fill">
+					<mat-label>CODIGO_TRACCION</mat-label>
+					<input matInput formControlName="CODIGO_TRACCION" required />
+					<mat-error *ngIf="form.controls['CODIGO_TRACCION'].invalid">Obligatorio</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="fill">
+					<mat-label>Traccion</mat-label>
+					<mat-select formControlName="CODIGO_TRACCION" required>
+						<mat-option *ngFor="let traccion of tracciones" [value]="traccion.CODIGO_TRACCION">
+						{{ traccion.DESCRIPCION_trac }} ({{ traccion.CODIGO_TRACCION }})
+						</mat-option>
+					</mat-select>
+					<mat-error *ngIf="form.controls['CODIGO_HERMANDAD'].invalid">Obligatorio</mat-error>
+				</mat-form-field>				
+				<mat-form-field appearance="fill">
+					<mat-label>CODIGO_FECHA</mat-label>
+					<input matInput formControlName="CODIGO_FECHA" required />
+					<mat-error *ngIf="form.controls['CODIGO_FECHA'].invalid">Obligatorio</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="fill">
+					<mat-label>CODIGO_HORA</mat-label>
+					<input matInput formControlName="CODIGO_HORA" required />
+					<mat-error *ngIf="form.controls['CODIGO_HORA'].invalid">Obligatorio</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="fill">
+					<mat-label>CODIGO_JORNADA</mat-label>
+					<input matInput formControlName="CODIGO_JORNADA" required />
+					<mat-error *ngIf="form.controls['CODIGO_JORNADA'].invalid">Obligatorio</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="fill">
+					<mat-label>CODIGO_TOPONIMO</mat-label>
+					<input matInput formControlName="CODIGO_TOPONIMO" required />
+					<mat-error *ngIf="form.controls['CODIGO_TOPONIMO'].invalid">Obligatorio</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="fill">
+					<mat-label>CODIGO_CATEGORIA</mat-label>
+					<input matInput formControlName="CODIGO_CATEGORIA" required />
+					<mat-error *ngIf="form.controls['CODIGO_CATEGORIA'].invalid">Obligatorio</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="fill">
+					<mat-label>CODIGO_PARCELA</mat-label>
+					<input matInput formControlName="CODIGO_PARCELA" required />
+					<mat-error *ngIf="form.controls['CODIGO_PARCELA'].invalid">Obligatorio</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="fill">
+					<mat-label>OBSERVACIONES</mat-label>
+					<input matInput formControlName="OBSERVACIONES" />
+				</mat-form-field>
+          <div class="form-actions">
+          <button mat-flat-button color="primary" type="submit" [disabled]="loading">
+            {{ isEdit ? 'Actualizar' : 'Crear' }}
+          </button>
+          <button mat-button type="button" (click)="router.navigate(['/recorridos'])">Cancelar</button>
+        </div>
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+        <mat-error *ngIf="error">{{ error }}</mat-error>
+      </form>
+    </mat-card>
+  </div>
+
+  <!-- Visor de mapa SOLO en edición y si hay geojson -->
+  <div class="recorrido-mapa-container" *ngIf="isEdit">
+    <app-visor-mapa
+      *ngIf="geojsonRecorrido"
+      [geojson]="geojsonRecorrido"
+      [height]="'400px'">
+    </app-visor-mapa>
+    <div *ngIf="!geojsonRecorrido" class="no-mapa">No hay cartografía para este recorrido</div>
+  </div>
+</div>

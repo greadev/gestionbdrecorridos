@@ -1,0 +1,14 @@
+<div class="visor-mapa-editable">
+  <div #mapaContainer class="visor-mapa-container"></div>
+  <div class="visor-mapa-tools">
+    <button mat-raised-button color="primary" (click)="onEditar()" *ngIf="!editing">
+      Editar geometría
+    </button>
+    <button mat-stroked-button color="accent" (click)="onGuardar()" *ngIf="editing">
+      Guardar geometría
+    </button>
+    <button mat-stroked-button color="warn" (click)="onCancelar()" *ngIf="editing">
+      Cancelar
+    </button>
+  </div>
+</div>

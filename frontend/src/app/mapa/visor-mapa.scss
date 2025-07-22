@@ -1,0 +1,20 @@
+@import "~maplibre-gl/dist/maplibre-gl.css";
+
+:host {
+  display: block;
+  height: 100vh; /* viewport height */
+  width: 100vw;  /* viewport width */
+  margin: 0;
+  padding: 0;
+}
+.mapa-full {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+
+

@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  backend:
+    build: ./backend
+    container_name: gestionbdrecorridos-backend
+    restart: always
+    env_file:
+      - ./backend/.env
+    ports:
+      - "3001:3000"
+    depends_on:
+      - db
+    networks:
+      - gestionbdrecorridos-net
+
+  frontend:
+    build: ./frontend
+    container_name: gestionbdrecorridos-frontend
+    restart: always
+    ports:
+      - "8083:80"
+    networks:
+      - gestionbdrecorridos-net
+
+volumes:
+  gestionbdrecorridos-dbdata:
+
+networks:
+  gestionbdrecorridos-net:
+    driver: bridge
