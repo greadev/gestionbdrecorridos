@@ -8,8 +8,6 @@ services:
       - ./backend/.env
     ports:
       - "3001:3000"
-    depends_on:
-      - db
     networks:
       - gestionbdrecorridos-net
 
