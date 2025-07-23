@@ -33,3 +33,24 @@ exports.login = async (req, res) => {
   const token = sign({ id: user.ID, username: user.USERNAME, rol: user.ROL });
   res.json({ token, user: { id: user.ID, username: user.USERNAME, rol: user.ROL } });
 };
+
+// Cambiar contraseña de un usuario
+exports.resetPassword = async (req, res) => {
+  const { username, newPassword } = req.body;
+  if (!username || !newPassword)
+    return res.status(400).json({ error: 'Faltan campos' });
+
+  const user = await User.findByUsername(username);
+  if (!user) return res.status(404).json({ error: 'Usuario no existe' });
+
+  const passwordHash = await hash(newPassword);
+  await User.updatePassword(username, passwordHash);
+  res.json({ mensaje: 'Contraseña actualizada correctamente' });
+};
+
+// Listar todos los usuarios (solo admin/superadmin)
+exports.listUsers = async (req, res) => {
+  const users = await User.getAll();
+  res.json(users);
+};
+

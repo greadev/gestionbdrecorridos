@@ -1,0 +1,38 @@
+<div class="usuario-register-container">
+  <mat-card>
+    <mat-card-title>Alta de usuario</mat-card-title>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre de usuario</mat-label>
+        <input matInput formControlName="username" required />
+        <mat-error *ngIf="form.controls['username'].invalid">Obligatorio</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" type="password" required />
+        <mat-error *ngIf="form.controls['password'].invalid">
+          La contraseña es obligatoria y debe tener al menos 6 caracteres
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Repite la contraseña</mat-label>
+        <input matInput formControlName="confirmPassword" type="password" required />
+        <mat-error *ngIf="form.hasError('passwordMismatch')">
+            Las contraseñas no coinciden
+        </mat-error>
+      </mat-form-field>      
+      <mat-form-field appearance="fill">
+        <mat-label>Rol</mat-label>
+        <mat-select formControlName="rol" required>
+          <mat-option *ngFor="let rol of roles" [value]="rol">{{ rol }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-flat-button color="primary" type="submit" [disabled]="loading">
+        Crear usuario
+      </button>
+      <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+      <mat-error *ngIf="error">{{ error }}</mat-error>
+      <div class="success-msg" *ngIf="success">¡Usuario creado correctamente!</div>
+    </form>
+  </mat-card>
+</div>

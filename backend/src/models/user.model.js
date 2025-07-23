@@ -17,4 +17,20 @@ const findByUsername = async (username) => {
   return res.rows[0];
 };
 
-module.exports = { create, findByUsername };
+// Cambia la contraseña de un usuario existente
+const updatePassword = async (username, passwordHash) => {
+  await pool.query(
+    `UPDATE "USUARIO" SET "PASSWORD_HASH" = $1 WHERE "USERNAME" = $2`,
+    [passwordHash, username]
+  );
+};
+
+// Lista todos los usuarios con su username y rol (pero sin el hash)
+const getAll = async () => {
+  const res = await pool.query(
+    `SELECT "ID", "USERNAME", "ROL" FROM "USUARIO" ORDER BY "USERNAME"`
+  );
+  return res.rows;
+};
+
+module.exports = { create, findByUsername, updatePassword, getAll };

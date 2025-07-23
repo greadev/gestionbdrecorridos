@@ -1,12 +1,12 @@
 import {
   _animationsDisabled
-} from "./chunk-J3SCW4CB.js";
+} from "./chunk-TGXNECGV.js";
 import {
   _getEventTarget,
   isFakeMousedownFromScreenReader,
   isFakeTouchstartFromScreenReader,
   normalizePassiveListenerOptions
-} from "./chunk-E27ZFVFN.js";
+} from "./chunk-XDIXB4AD.js";
 import {
   _CdkPrivateStyleLoader
 } from "./chunk-A25RE4R5.js";
@@ -640,9 +640,11 @@ var MatRipple = class _MatRipple {
 
 export {
   _StructuralStylesLoader,
+  RippleState,
+  RippleRef,
   defaultRippleAnimationConfig,
   RippleRenderer,
   MAT_RIPPLE_GLOBAL_OPTIONS,
   MatRipple
 };
-//# sourceMappingURL=chunk-J7K2ADJM.js.map
+//# sourceMappingURL=chunk-5SBWYDL6.js.map

@@ -5,7 +5,8 @@
   <img src="assets/logo_grea.png" class="logo-img" alt="Logo" />
   <span class="logo-text">Gestión PROM V0.1</span>
   <span class="spacer"></span>
-  <span *ngIf="usuario" class="usuario">Hola, {{ usuario }}</span>
+  <mat-icon>account_circle</mat-icon>
+  <span *ngIf="usuario" class="usuario">{{ usuario }}</span>
   <button mat-icon-button (click)="logout()" title="Cerrar sesión">
     <mat-icon>logout</mat-icon>
   </button>
@@ -16,6 +17,7 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/recorridos" routerLinkActive="active"><mat-icon>list_alt</mat-icon> Recorridos</a>
       <a mat-list-item routerLink="/demo-mapa" routerLinkActive="active"><mat-icon>map</mat-icon> Demo Mapa</a>
+      <a mat-list-item routerLink="/usuarios/nuevo" routerLinkActive="active"><mat-icon>home</mat-icon> Usuarios</a>
       <!-- Más opciones -->
       <a mat-list-item routerLink="/login" (click)="logout()"><mat-icon>logout</mat-icon> Cerrar sesión</a>
     </mat-nav-list>

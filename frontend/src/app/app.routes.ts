@@ -26,17 +26,29 @@ export const routes: Routes = [
       {
         path: 'recorridos/nuevo',
         loadComponent: () => import('./recorridos/recorrido-form/recorrido-form').then(m => m.RecorridoFormComponent),
-        canActivate: [AuthGuard], data: { roles: ['admin', 'gestor'] }
+        canActivate: [AuthGuard], data: { roles: [ 'superadmin', 'admin', 'gestor'] }
       },
       {
         path: 'recorridos/editar/:id',
         loadComponent: () => import('./recorridos/recorrido-form/recorrido-form').then(m => m.RecorridoFormComponent),
-        canActivate: [AuthGuard], data: { roles: ['admin', 'gestor'] }
+        canActivate: [AuthGuard], data: { roles: ['superadmin', 'admin', 'gestor'] }
       },
       {
         path: 'demo-mapa',
         loadComponent: () => import('./mapa/demo-mapa').then(m => m.DemoMapaComponent),
         canActivate: [AuthGuard] // si quieres protegerlo
+      },
+      {
+        path: 'usuarios/nuevo',
+        loadComponent: () => import('./usuarios/usuario-register/usuario-register').then(m => m.UsuarioRegisterComponent),
+        canActivate: [AuthGuard],
+        data: { roles: ['admin', 'superadmin'] }
+      },
+      {
+        path: 'usuarios/reset-password',
+        loadComponent: () => import('./usuarios/reset-password/reset-password').then(m => m.ResetPasswordComponent),
+        canActivate: [AuthGuard],
+        data: { roles: ['admin', 'superadmin'] }
       }
     ]
   },
