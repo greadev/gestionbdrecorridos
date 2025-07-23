@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { VisorMapaComponent } from './visor-mapa';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-demo-mapa',
@@ -32,7 +34,7 @@ export class DemoMapaComponent implements OnInit {
         }
       ]
     };
-    this.http.get<GeoJSON.FeatureCollection>('http://localhost:3000/api/itinerarios/geojson')
+    this.http.get<GeoJSON.FeatureCollection>(`${environment.apiUrl}/itinerarios/geojson`)
       .subscribe(data => this.geojsonRecorridos = data);
   }
 }

@@ -12,19 +12,20 @@
   </button>
 </mat-toolbar>
 
-<mat-sidenav-container class="main-container">
-  <mat-sidenav #sidenav [(opened)]="opened" mode="over" class="main-sidenav" [fixedInViewport]="true">
-    <mat-nav-list>
-      <a mat-list-item routerLink="/recorridos" routerLinkActive="active" (click)="opened = false"><mat-icon>list_alt</mat-icon> Recorridos</a>
-      <a mat-list-item routerLink="/demo-mapa" routerLinkActive="active" (click)="opened = false"><mat-icon>map</mat-icon> Demo Mapa</a>
-      <a mat-list-item routerLink="/usuarios/nuevo" routerLinkActive="active" (click)="opened = false"><mat-icon>home</mat-icon> Nuevo usuario</a>
-      <a mat-list-item routerLink="/usuarios/reset-password" routerLinkActive="active" (click)="opened = false"><mat-icon>home</mat-icon> Cambiar Contraseña</a>
-      <!-- Más opciones -->
-      <a mat-list-item routerLink="/login" (click)="logout()"><mat-icon>logout</mat-icon> Cerrar sesión</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  <mat-sidenav-container class="main-container">
+    <mat-sidenav #sidenav [(opened)]="opened" mode="over" class="main-sidenav" [fixedInViewport]="true">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/recorridos" routerLinkActive="active" (click)="opened = false"><mat-icon>list_alt</mat-icon> Recorridos</a>
+        <a mat-list-item routerLink="/demo-mapa" routerLinkActive="active" (click)="opened = false"><mat-icon>map</mat-icon> Demo Mapa</a>
+        <a mat-list-item routerLink="/usuarios/nuevo" routerLinkActive="active" (click)="opened = false"><mat-icon>home</mat-icon> Nuevo usuario</a>
+        <a mat-list-item routerLink="/usuarios/reset-password" routerLinkActive="active" (click)="opened = false"><mat-icon>home</mat-icon> Cambiar Contraseña</a>
+        <!-- Más opciones -->
+        <a mat-list-item routerLink="/login" (click)="logout()"><mat-icon>logout</mat-icon> Cerrar sesión</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
 

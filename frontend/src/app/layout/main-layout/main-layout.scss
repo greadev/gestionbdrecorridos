@@ -28,10 +28,13 @@
 }
 
 .main-sidenav {
-  min-width: 220px;
-  width: 250px;
-  background: #1a7a52;
   color: #fff;
+  height: calc(100vh - 64px);
+  top: 64px !important;
+  min-width: 220px;
+  width: 220px;
+  background: #1a7a52;
+  font-style: normal;
   .mat-list-item {
     color: #fff !important;
     .mat-icon { margin-right: 10px; }
