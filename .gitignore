@@ -7,6 +7,10 @@ frontend/dist/
 backend/dist/
 backend/build/
 
+# Caches
+frontend/.angular/cache/
+
+
 # Logs
 *.log
 logs/
